@@ -9,3 +9,5 @@ npm install
 npm run dev
 Use Postman or similar tool to test the API endpoints
 Please refer documentation provided in the same folder for endpoints info.
+
+Note: The project uses connection to the remote mongodb server so database dump is not needed to run the project locally. Following the instructions in the README should run the project.
