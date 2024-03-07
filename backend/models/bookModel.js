@@ -11,10 +11,25 @@ const bookSchema = mongoose.Schema(
     author: {
       type: String,
       required: true,
+      // Custom validator for author
+      validate: {
+        validator: function(v) {
+          // Check if the author contains only small and uppercase alphabets and spaces
+          return /^[a-zA-Z\s]+$/.test(v);
+        },
+        message: props => `${props.value} is not a valid author name! Author must contain only alphabets and spaces.`,
+      },
     },
     publicationYear: {
       type: Number,
       required: true,
+      // publishYear validation
+      validate: {
+        validator: function(v) {
+            return v && !isNaN(v) && v <= new Date().getFullYear();
+        },
+        message: props => `${props.value} is not a valid publication year! Year must be in the past.`
+      }
     },
   },
   {
